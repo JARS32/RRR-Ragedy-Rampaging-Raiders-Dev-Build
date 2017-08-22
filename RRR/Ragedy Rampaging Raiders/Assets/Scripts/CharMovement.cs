@@ -7,7 +7,7 @@ public class CharMovement : MonoBehaviour {
     private Rigidbody rb;
 
     // CHANGED
-    public Vector3 velocity = new Vector3(5, 5, 0);
+    public Vector3 velocity = new Vector3(0, 10, 0);
     public float Gravity = 9.8f;
     //CHANGED
 
@@ -19,6 +19,8 @@ public class CharMovement : MonoBehaviour {
 
     private float yaw = 0.0f;
     private float pitch = 0.0f;
+
+    private float jumpState = 1f;
 
     // Use this for initialization
     void Start () {
@@ -49,10 +51,14 @@ public class CharMovement : MonoBehaviour {
         }
         if (Input.GetKey(KeyCode.Space))
         {
-			rb.AddForce(new Vector3(0.0f, transform.up.y , 0.0f) * jumpSpeed);
-            //CHANGED
-            Gravity = 9.8f;
-            //CHANGED
+            if (jumpState == 1.0f)
+            {
+                velocity = new Vector3(0, jumpSpeed, 0);
+                //CHANGED
+                Gravity = 9.8f;
+                //CHANGED
+                jumpState = 0;
+            }
         }
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -74,10 +80,11 @@ public class CharMovement : MonoBehaviour {
     //CHANGED
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.name == "default")
+        if (other.gameObject.CompareTag("Floor"))
         {
             Gravity = 0.0f;
             velocity.y = 0;
+            jumpState = 1f;
         }
 
     }

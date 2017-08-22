@@ -30,6 +30,7 @@ public class CharMovement2 : MonoBehaviour {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        Gravity = 9.8f;
 
         if (Input.GetKey(KeyCode.W))
         {
@@ -50,9 +51,6 @@ public class CharMovement2 : MonoBehaviour {
         if (Input.GetKey(KeyCode.Space))
         {
 			rb.AddForce(new Vector3(0.0f, transform.up.y , 0.0f) * jumpSpeed);
-            //CHANGED
-            Gravity = 9.8f;
-            //CHANGED
         }
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -74,7 +72,7 @@ public class CharMovement2 : MonoBehaviour {
     //CHANGED
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.name == "default")
+        if (other.gameObject.CompareTag("Floor"))
         {
             Gravity = 0.0f;
             velocity.y = 0;
