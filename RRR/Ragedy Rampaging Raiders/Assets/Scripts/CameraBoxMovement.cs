@@ -21,5 +21,11 @@ public class CameraBoxMovement : MonoBehaviour {
         pitch -= speedH * Input.GetAxis("Mouse Y");
 
         transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
+
+        if (pitch > 90)
+            pitch = 90;
+
+        if (pitch < -90)
+            pitch = -90;
     }
 }

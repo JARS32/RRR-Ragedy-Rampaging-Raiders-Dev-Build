@@ -51,7 +51,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\cha_data\Script\ScreenShot.cs" />
      <Compile Include="Assets\Scripts\CameraBoxMovement.cs" />
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
      <Compile Include="Assets\Scripts\CharMovement.cs" />
