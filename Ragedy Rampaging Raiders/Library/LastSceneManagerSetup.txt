@@ -1,5 +1,0 @@
-sceneSetups:
-- path: C:/Users/jars7/OneDrive/Unity/RRR/Ragedy Rampaging Raiders/Assets/Scenes/RRR
-    scene 1 1.0.unity
-  isLoaded: 1
-  isActive: 1
