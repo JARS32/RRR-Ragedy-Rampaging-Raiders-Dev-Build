@@ -5,8 +5,14 @@ using UnityEngine;
 public class CharMovement : MonoBehaviour {
 
     private Rigidbody rb;
+
+    // CHANGED
+    public Vector3 velocity = new Vector3(5, 5, 0);
+    public float Gravity = 9.8f;
+    //CHANGED
+
     public float speed;
-	public float jumpSpeed;
+    public float jumpSpeed;
 
     public float speedH = 2.0f;
     public float speedV = 2.0f;
@@ -17,7 +23,6 @@ public class CharMovement : MonoBehaviour {
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody>();
-        Physics.gravity = new Vector3(0, -200.0F, 0);
     }
 	
 	// Update is called once per frame
@@ -45,6 +50,9 @@ public class CharMovement : MonoBehaviour {
         if (Input.GetKey(KeyCode.Space))
         {
 			rb.AddForce(new Vector3(0.0f, transform.up.y , 0.0f) * jumpSpeed);
+            //CHANGED
+            Gravity = 9.8f;
+            //CHANGED
         }
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -54,5 +62,24 @@ public class CharMovement : MonoBehaviour {
         transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f);
 
         rb.velocity = (movement * speed);
+
+        //CHANGED
+        // Apply Gravity
+        velocity.y -= Gravity * Time.deltaTime;
+
+        // Calculate new position
+        transform.position += velocity * Time.deltaTime;
+        //CHANGED
     }
+    //CHANGED
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.name == "default")
+        {
+            Gravity = 0.0f;
+            velocity.y = 0;
+        }
+
+    }
+    //CHANGED
 }
