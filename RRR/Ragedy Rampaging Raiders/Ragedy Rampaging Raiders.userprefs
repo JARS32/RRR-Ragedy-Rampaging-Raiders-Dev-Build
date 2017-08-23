@@ -1,0 +1,14 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CharMovement.cs">
+    <Files>
+      <File FileName="Assets\Scripts\CharMovement.cs" Line="14" Column="30" />
+      <File FileName="Assets\Scripts\CameraMovement.cs" Line="28" Column="27" />
+      <File FileName="Assets\Scripts\CameraBoxMovement.cs" Line="21" Column="16" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
