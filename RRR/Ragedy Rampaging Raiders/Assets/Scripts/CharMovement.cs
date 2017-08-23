@@ -88,5 +88,22 @@ public class CharMovement : MonoBehaviour {
         }
 
     }
+
+    void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.CompareTag("Floor"))
+        {
+            Gravity = 9.8f;
+            velocity.y = 1;
+            jumpState = 0f;
+        }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            Gravity = 9.8f;
+            velocity.y = 1;
+            jumpState = 1f;
+        }
+    }
     //CHANGED
 }
