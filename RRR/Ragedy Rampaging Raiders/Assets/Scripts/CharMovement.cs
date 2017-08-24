@@ -13,6 +13,7 @@ public class CharMovement : MonoBehaviour {
 
     public float speed;
     public float jumpSpeed;
+	private float fall;
 
     public float speedH = 2.0f;
     public float speedV = 2.0f;
@@ -21,6 +22,7 @@ public class CharMovement : MonoBehaviour {
     private float pitch = 0.0f;
 
     private float jumpState = 1f;
+	private float timer = 10f;
 
     // Use this for initialization
     void Start () {
@@ -68,11 +70,17 @@ public class CharMovement : MonoBehaviour {
         transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f);
 
         rb.velocity = (movement * speed);
+		if (timer > 0)
+		{
+			timer = timer - 1;
+		}
+		if (timer <= 0) 
+		{
+			velocity = new Vector3(0, 0, 0);
+		}
 
         //CHANGED
         // Apply Gravity
-        velocity.y -= Gravity * Time.deltaTime;
-
         // Calculate new position
         transform.position += velocity * Time.deltaTime;
         //CHANGED
@@ -85,6 +93,7 @@ public class CharMovement : MonoBehaviour {
             Gravity = 0.0f;
             velocity.y = 0;
             jumpState = 1f;
+			fall = 10;
         }
 
     }

@@ -82,6 +82,8 @@
     <Compile Include="Assets\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\CharMovement.cs" />
     <Compile Include="Assets\Scripts\EnemyHit.cs" />
+    <Compile Include="Assets\Scripts\Gravity.cs" />
+    <Compile Include="Assets\Scripts\NewCharMovement.cs" />
     <Compile Include="Assets\Scripts\SwordSwing.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
