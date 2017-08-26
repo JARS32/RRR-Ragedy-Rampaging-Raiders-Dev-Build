@@ -8,14 +8,14 @@ public class TpController : MonoBehaviour
     public static CharacterController CharacterController;
     public static TpController Instance;
 
-	void Awake ()
+    void Awake ()
     {
         CharacterController = GetComponent("CharacterController") as CharacterController;
         Instance = this;
     }
-	
 
-	void Update ()
+
+    void Update()
     {
         if (Camera.main == null)
             return;
@@ -27,6 +27,11 @@ public class TpController : MonoBehaviour
         if (CharacterController.transform.position.y < -10)
         {
             CharacterController.transform.position = new Vector3(0, 4, 0);
+        }
+
+        if (TpController.CharacterController.isGrounded)
+        {
+            TpMotor.Instance.CanJump = 2f;
         }
     }
 
@@ -50,11 +55,11 @@ public class TpController : MonoBehaviour
 
     void HandleActionInput()
     {
-        if (Input.GetButton("Jump"))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && TpMotor.Instance.CanDash == true)
         {
             TpMotor.Instance.Dash();
         }

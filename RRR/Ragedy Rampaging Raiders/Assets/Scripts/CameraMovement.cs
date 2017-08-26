@@ -20,7 +20,7 @@ public class CameraMovement : MonoBehaviour
         {
             if (Camera.current != null)
             {
-                Camera.current.transform.Translate(new Vector3(cameraChange, 0f, 0f));
+                Camera.current.transform.localPosition = new Vector3(0f, 2f, -3);
                 cameraMode = 0f;
             }
         }
@@ -28,7 +28,7 @@ public class CameraMovement : MonoBehaviour
         {
             if (Camera.current != null)
             {
-                Camera.current.transform.Translate(new Vector3(cameraChange2, 0f, 0f));
+                Camera.current.transform.localPosition = new Vector3 (0f, 0f, 0f);
                 cameraMode = 1f;
             }
         }
@@ -36,7 +36,7 @@ public class CameraMovement : MonoBehaviour
         {
             if (Camera.current != null)
             {
-                Camera.current.transform.localPosition = new Vector3(0, 3.5f, 0);
+                Camera.current.transform.localPosition = new Vector3(0f, 2f, -3f);
                 cameraMode = 3f;
             }
         }

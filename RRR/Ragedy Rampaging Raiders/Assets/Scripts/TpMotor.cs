@@ -18,7 +18,13 @@ public class TpMotor : MonoBehaviour
     public float DashSpeed;
     public float DashDuration;
     public float DashCd;
+    public bool CanDash;
     private float IsDashing = 0f;
+    public float CanJump = 2f;
+    public AudioClip JumpSFX;
+    public AudioClip DashSFX;
+
+    AudioSource audioSource;
 
     private Vector3 SlideDirection;
     public Vector3 moveVector { get; set;  }
@@ -28,7 +34,8 @@ public class TpMotor : MonoBehaviour
     void Awake ()
     {
         Instance = this;
-	}
+        audioSource = GetComponent<AudioSource>();
+    }
 	
 
 	public void UpdateMotor ()
@@ -40,6 +47,10 @@ public class TpMotor : MonoBehaviour
     void Update()
     {
         IsDashing = IsDashing - DashDuration;
+        if (TpController.CharacterController.isGrounded)
+        {
+            CanDash = true;
+        }
     }
 
     void ProcessMotion ()
@@ -97,9 +108,11 @@ public class TpMotor : MonoBehaviour
 
     public void Jump()
     {
-        if (TpController.CharacterController.isGrounded)
+        if (CanJump > 0f)
         {
             verticalVelocity = jumpSpeed;
+            CanJump = CanJump - 1f;
+            audioSource.PlayOneShot(JumpSFX, 0.7F);
         }
     }
     public void Dash()
@@ -159,7 +172,9 @@ public class TpMotor : MonoBehaviour
         }
         if (IsDashing > 0)
         {
+            CanDash = false;
             moveSpeed = moveSpeed * DashSpeed;
+            audioSource.PlayOneShot(DashSFX, 0.7F);
         }
         return moveSpeed;
     }

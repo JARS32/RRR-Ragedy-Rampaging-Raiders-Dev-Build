@@ -69,6 +69,7 @@
     <Compile Include="Assets\Asset Store\TornadoBanditsStudio\Low Poly Free Pack\Scripts\TBS_CameraMovement.cs" />
     <Compile Include="Assets\Asset Store\TornadoBanditsStudio\Low Poly Free Pack\Water\TBS_Water.cs" />
     <Compile Include="Assets\Scripts\AddforceCharMove.cs" />
+    <Compile Include="Assets\Scripts\BasicAi.cs" />
     <Compile Include="Assets\Scripts\CameraBoxMovement.cs" />
     <Compile Include="Assets\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\CharMovement.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Assets\Scripts\Gravity.cs" />
     <Compile Include="Assets\Scripts\NewCharMovement.cs" />
     <Compile Include="Assets\Scripts\SwordSwing.cs" />
+    <Compile Include="Assets\Scripts\TextureTiling.cs" />
     <Compile Include="Assets\Scripts\TpAnimator.cs" />
     <Compile Include="Assets\Scripts\TpCamera.cs" />
     <Compile Include="Assets\Scripts\TpController.cs" />
