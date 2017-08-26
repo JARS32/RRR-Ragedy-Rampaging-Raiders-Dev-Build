@@ -22,10 +22,10 @@ public class CameraBoxMovement : MonoBehaviour {
 
         transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
 
-        if (pitch > 90)
-            pitch = 90;
+        if (pitch > 60)
+            pitch = 60;
 
-        if (pitch < -90)
-            pitch = -90;
+        if (pitch < -70)
+            pitch = -70;
     }
 }

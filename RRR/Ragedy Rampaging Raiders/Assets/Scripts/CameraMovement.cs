@@ -3,30 +3,50 @@ using System.Collections;
 
 public class CameraMovement : MonoBehaviour
 {
-
-    public GameObject player;
-
-
-    private Vector3 offset;
-
-    public float speedH = 2.0f;
-    public float speedV = 2.0f;
-
-    private float yaw = 0.0f;
-    private float pitch = 0.0f;
-
+    private float cameraMode = 0f;
+    public float cameraChange = 0f;
+    public float cameraChange2 = 0f;
 
     void Start()
     {
-        offset = transform.position - player.transform.position;
+        cameraChange2 = cameraChange * -1;
     }
 
     void Update()
     {
-        transform.position = player.transform.position + offset;
-        yaw += speedH * Input.GetAxis("Mouse X");
-        pitch += speedV * Input.GetAxis("Mouse Y");
-
-        transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        if (Input.GetKey(KeyCode.E) && cameraMode == 1f)
+        {
+            if (Camera.current != null)
+            {
+                Camera.current.transform.Translate(new Vector3(cameraChange, 0f, 0f));
+                cameraMode = 0f;
+            }
+        }
+        if (Input.GetKey(KeyCode.Q) && cameraMode == 0f)
+        {
+            if (Camera.current != null)
+            {
+                Camera.current.transform.Translate(new Vector3(cameraChange2, 0f, 0f));
+                cameraMode = 1f;
+            }
+        }
+        if (Input.GetKey(KeyCode.R) && cameraMode == 1f || Input.GetKey(KeyCode.R) && cameraMode == 0f)
+        {
+            if (Camera.current != null)
+            {
+                Camera.current.transform.localPosition = new Vector3(0, 3.5f, 0);
+                cameraMode = 3f;
+            }
+        }
+        if (Input.GetKey(KeyCode.R) && cameraMode == 3f)
+        {
+            if (Camera.current != null)
+            {
+                Camera.current.transform.localPosition = new Vector3(2, 2, -4);
+                cameraMode = 0f;
+            }
+        }
     }
 }

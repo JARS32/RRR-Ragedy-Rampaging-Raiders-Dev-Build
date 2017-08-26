@@ -39,7 +39,7 @@ public class NewCharMovement : MonoBehaviour {
 
 			if (jumpState == 1.0f) 
 			{
-				rb.velocity = new Vector3 (0, jumpSpeed, 0);
+				rb.AddForce(new Vector3 (0, jumpSpeed, 0));
 				jumpState = 0;
 			}
 		}
